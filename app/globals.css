@@ -1,0 +1,406 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Enhanced color palette with Oster Atelier philosophy */
+  /* Primary Colors */
+  --background: #f5f1e8;
+  --background-secondary: #ebe7dc;
+  --foreground: #1a1a1a;
+  --accent: #d86626;
+
+  /* Stone Grays - Subtle Tones */
+  --stone-50: #fafaf8;
+  --stone-100: #f5f1e8;
+  --stone-200: #ebe7dc;
+  --stone-300: #ddd8cc;
+  --stone-400: #b8b0a0;
+  --stone-500: #8b8378;
+  --stone-600: #6b6359;
+  --stone-700: #4a4238;
+  --stone-800: #2a2220;
+  --stone-900: #1a1a1a;
+
+  /* Legacy variables for compatibility */
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --primary: #1a1a1a;
+  --primary-foreground: #f5f1e8;
+  --secondary: #f0ebe3;
+  --secondary-foreground: #1a1a1a;
+  --muted: #f0ebe3;
+  --muted-foreground: #666666;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #e5dfd5;
+  --input: #e5dfd5;
+  --ring: #1a1a1a;
+  --chart-1: #3b82f6;
+  --chart-2: #8b5cf6;
+  --chart-3: #ec4899;
+  --chart-4: #f59e0b;
+  --chart-5: #10b981;
+  --radius: 0.625rem;
+  --sidebar: #f5f1e8;
+  --sidebar-foreground: #1a1a1a;
+  --sidebar-primary: #1a1a1a;
+  --sidebar-primary-foreground: #f5f1e8;
+  --sidebar-accent: #f0ebe3;
+  --sidebar-accent-foreground: #1a1a1a;
+  --sidebar-border: #e5dfd5;
+  --sidebar-ring: #1a1a1a;
+
+  /* Typography scale for consistent sizing */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+  --text-6xl: 3.75rem;
+
+  /* Spacing scale for breathing room */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  --spacing-4xl: 6rem;
+  --spacing-5xl: 8rem;
+
+  /* Font families - set by layout.tsx */
+  --font-fraunces: "Fraunces", serif;
+  --font-montserrat: "Montserrat", sans-serif;
+  --font-newsreader: "Newsreader", serif;
+}
+
+.dark {
+  --background: #1a1a1a;
+  --background-secondary: #2a2a2a;
+  --foreground: #f5f1e8;
+  --accent: #d86626;
+  --card: #2a2a2a;
+  --card-foreground: #f5f1e8;
+  --popover: #2a2a2a;
+  --popover-foreground: #f5f1e8;
+  --primary: #f5f1e8;
+  --primary-foreground: #1a1a1a;
+  --secondary: #3a3a3a;
+  --secondary-foreground: #f5f1e8;
+  --muted: #3a3a3a;
+  --muted-foreground: #999999;
+  --accent-foreground: #1a1a1a;
+  --destructive: #ef4444;
+  --destructive-foreground: #1a1a1a;
+  --border: #3a3a3a;
+  --input: #3a3a3a;
+  --ring: #f5f1e8;
+  --chart-1: #60a5fa;
+  --chart-2: #a78bfa;
+  --chart-3: #f472b6;
+  --chart-4: #fbbf24;
+  --chart-5: #34d399;
+  --sidebar: #1a1a1a;
+  --sidebar-foreground: #f5f1e8;
+  --sidebar-primary: #f5f1e8;
+  --sidebar-primary-foreground: #1a1a1a;
+  --sidebar-accent: #3a3a3a;
+  --sidebar-accent-foreground: #f5f1e8;
+  --sidebar-border: #3a3a3a;
+  --sidebar-ring: #f5f1e8;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-secondary: var(--background-secondary);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Geist", "Geist Fallback", system-ui, sans-serif;
+  }
+
+  h1 {
+    font-family: var(--font-fraunces);
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    font-family: var(--font-fraunces);
+    font-size: clamp(1.875rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  h3 {
+    font-family: var(--font-fraunces);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  h4 {
+    font-family: var(--font-montserrat);
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  h5 {
+    font-family: var(--font-montserrat);
+    font-size: 1.125rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  h6 {
+    font-family: var(--font-montserrat);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  p {
+    font-family: var(--font-newsreader);
+    font-size: 1.125rem;
+    line-height: 1.75;
+  }
+
+  small {
+    font-family: var(--font-montserrat);
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+  }
+}
+
+@layer components {
+  .font-fraunces {
+    font-family: var(--font-fraunces);
+  }
+  .font-montserrat {
+    font-family: var(--font-montserrat);
+  }
+  .font-newsreader {
+    font-family: var(--font-newsreader);
+  }
+
+  .section-label {
+    font-family: var(--font-montserrat);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .btn-primary {
+    @apply px-8 py-3 bg-accent text-accent-foreground font-semibold tracking-wide uppercase rounded-lg transition-all duration-300 ease-out hover:shadow-lg active:scale-95;
+    font-family: var(--font-montserrat);
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+  }
+
+  .btn-secondary {
+    @apply px-8 py-3 bg-background-secondary text-foreground font-semibold tracking-wide uppercase rounded-lg border-2 border-foreground transition-all duration-300 ease-out hover:bg-foreground hover:text-background-secondary active:scale-95;
+    font-family: var(--font-montserrat);
+  }
+
+  .btn-outline {
+    @apply px-8 py-3 bg-transparent text-foreground font-semibold tracking-wide uppercase rounded-lg border-2 border-foreground transition-all duration-300 ease-out hover:bg-foreground hover:text-background-secondary active:scale-95;
+    font-family: var(--font-montserrat);
+  }
+
+  .btn-ghost {
+    @apply px-8 py-3 text-foreground font-semibold tracking-wide uppercase transition-all duration-300 ease-out hover:text-accent active:scale-95;
+    font-family: var(--font-montserrat);
+  }
+}
+
+@layer utilities {
+  .section-padding {
+    @apply py-20 lg:py-32;
+  }
+
+  .section-padding-sm {
+    @apply py-12 lg:py-20;
+  }
+
+  .section-padding-lg {
+    @apply py-24 lg:py-40;
+  }
+
+  .px-fluid {
+    padding-left: clamp(1rem, 5vw, 3rem);
+    padding-right: clamp(1rem, 5vw, 3rem);
+  }
+
+  @keyframes soft-fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes pulse-smooth {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.2);
+    }
+  }
+
+  @keyframes fade-in-blur {
+    from {
+      opacity: 0;
+      filter: blur(10px);
+    }
+    to {
+      opacity: 1;
+      filter: blur(0);
+    }
+  }
+
+  @keyframes fade-out-blur {
+    from {
+      opacity: 1;
+      filter: blur(0);
+    }
+    to {
+      opacity: 0;
+      filter: blur(10px);
+    }
+  }
+
+  .animate-soft-fade-in {
+    animation: soft-fade-in 0.8s ease-out;
+  }
+
+  .animate-pulse-smooth {
+    animation: pulse-smooth 1.2s ease-in-out infinite;
+  }
+
+  .animate-fade-in-blur {
+    animation: fade-in-blur 0.6s ease-out;
+  }
+
+  .animate-fade-out-blur {
+    animation: fade-out-blur 0.6s ease-out;
+  }
+
+  .text-display {
+    font-family: var(--font-fraunces);
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .text-headline {
+    font-family: var(--font-fraunces);
+    font-size: clamp(1.875rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .text-subheading {
+    font-family: var(--font-fraunces);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .text-label {
+    font-family: var(--font-montserrat);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .text-body {
+    font-family: var(--font-newsreader);
+    font-size: 1.125rem;
+    line-height: 1.75;
+  }
+
+  .text-caption {
+    font-family: var(--font-montserrat);
+    font-size: 0.875rem;
+    letter-spacing: 0.05em;
+  }
+
+  .text-accent-primary {
+    color: var(--accent);
+  }
+
+  .bg-accent-subtle {
+    background-color: var(--background-secondary);
+  }
+
+  .border-accent {
+    border-color: var(--accent);
+  }
+}
